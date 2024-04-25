@@ -1,5 +1,5 @@
 .page {
-  background-color: #dcdcdc;
+  background-color: #d4dfe7;
   min-width: 320px;
   max-width: 1280px;
   width: 100%;
@@ -22,6 +22,11 @@
   border-bottom: 1px solid #c0c0c0;
 }
 
+.headet__title {
+  font-size: 38px;
+  color: #006161;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -29,44 +34,25 @@
   align-items: center;
   padding: 30px;
 }
-.card {
+.chart {
   max-width: 1280px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.card__title {
-  margin: 0;
-  font-weight: normal;
+  border-bottom: 1px solid #c0c0c0;
   margin-bottom: 30px;
 }
-.card__content {
+.chart__title {
   margin: 0;
-  padding: 0;
-  max-width: 1000px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.card__element {
-  list-style: none;
-  max-width: 250px;
-  padding: 10px 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #c0c0c0;
-  border-right: none;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #328080;
 }
 
-.card__element:last-child {
-  border: 1px solid #c0c0c0;
-}
-
-#canvas {
+#bar_chart {
   background-color: #fff;
-  border: 1px solid black;
+  border: 1px solid #006161;
+  border-radius: 12px;
+  margin-bottom: 50px;
 }

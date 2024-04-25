@@ -1,4 +1,4 @@
-export const canvas = document.getElementById('canvas');
+export const canvas = document.getElementById('bar_chart');
 export const ctx = canvas.getContext('2d');
 
 export const canvasWidth = canvas.clientWidth;

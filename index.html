@@ -8,20 +8,18 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body class="page">
-    <header class="header">This is Header!</header>
+    <header class="header">
+      <h1 class="headet__title">Data Visualization Dashboard</h1>
+    </header>
     <main class="content">
-      <div class="card">
-        <h1 class="card__title">User Info</h1>
-        <canvas id="canvas" width="700" height="400"></canvas>
-      </div>
-      <template class="content__template">
-        <ul class="card__content">
-          <li class="card__element card__user-id">1</li>
-          <li class="card__element card__user-name">Alex</li>
-          <li class="card__element card__user-email">alex@gmail.com</li>
-          <li class="card__element card__user-city">Minsk</li>
-        </ul>
-      </template>
+      <section class="chart">
+        <h2 class="chart__title">Number of Posts per User</h2>
+        <canvas id="bar_chart" width="1000" height="500"></canvas>
+      </section>
+      <section class="chart">
+        <h2 class="chart__title">Monthly Comment Trend</h2>
+        <canvas id="line_chart" width="1000" height="500"></canvas>
+      </section>
     </main>
   </body>
 </html>
