@@ -57,4 +57,22 @@ export default function generateLineChart() {
   ctxLc.textBaseline = 'top';
   ctxLc.fillText('0', 45, canvasHeightLc - 55);
   ctxLc.fillText('Jan', 60, canvasHeightLc - 35);
+
+  for (let i = 0; i < canvasWidthLc / 35; i++) {
+    ctxLc.beginPath();
+    ctxLc.strokeStyle = 'rgba(153,153,153,0.5)';
+    ctxLc.moveTo(100 + i * 30, canvasHeightLc - 50);
+    ctxLc.lineTo(100 + i * 30, 50);
+    ctxLc.stroke();
+    ctxLc.closePath();
+  }
+
+  for (let i = 0; i < canvasHeightLc / 41; i++) {
+    ctxLc.beginPath();
+    ctxLc.strokeStyle = 'rgba(153,153,153,0.5)';
+    ctxLc.moveTo(70, canvasHeightLc - 80 - i * 30);
+    ctxLc.lineTo(canvasWidthLc - 51, canvasHeightLc - 80 - i * 30);
+    ctxLc.stroke();
+    ctxLc.closePath();
+  }
 }
