@@ -51,7 +51,12 @@ export default function generateBarChart() {
   ctx.font = '16px Arial';
   ctx.fillStyle = '#005555';
   ctx.fillText('Posts', 10, 30);
-  ctx.fillText('Users', canvasWidth - 50, canvasHeight - 7);
+  ctx.fillText('Users', canvasWidth - 55, canvasHeight - 10);
+
+  ctx.font = '14px Arial';
+  ctx.fillStyle = '#005555';
+  ctx.textBaseline = 'top';
+  ctx.fillText('0', 45, canvasHeight - 55);
 
   Promise.all([posts, users]).then((data) => {
     console.log(data);
@@ -73,6 +78,21 @@ export default function generateBarChart() {
     }
 
     console.log(users);
+    users[3].numberOfPosts = 11;
+    let max = users.reduce((acc, curr) =>
+      acc.numberOfPosts > curr.numberOfPosts ? acc : curr,
+    );
+
+    ctx.font = '14px Arial';
+    ctx.fillStyle = '#005555';
+    ctx.textBaseline = 'top';
+    ctx.fillText(`${max.numberOfPosts}`, 45, canvasHeight - 50 - max.numberOfPosts * 30);
+    ctx.fillText(
+      `${Math.round(max.numberOfPosts / 2)}`,
+      45,
+      canvasHeight - 50 - Math.round(max.numberOfPosts / 2) * 30,
+    );
+
     let iterator = 100;
     users.map((user) => {
       ctx.fillStyle = '#86B8B1';
