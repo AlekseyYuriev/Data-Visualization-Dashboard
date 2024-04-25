@@ -5,73 +5,92 @@ import { canvasHeightLc, canvasWidthLc, ctxLc } from '../utils/constants.js';
 export default function generateLineChart() {
   const comments = getData(COMMENTS_URL).then((data) => console.log(data));
 
+  // Y axis
   ctxLc.beginPath();
   ctxLc.moveTo(70, canvasHeightLc - 50);
-  ctxLc.lineTo(canvasWidthLc - 50, canvasHeightLc - 50);
+  ctxLc.lineTo(canvasWidthLc - 80, canvasHeightLc - 50);
   ctxLc.stroke();
   ctxLc.closePath();
 
   ctxLc.beginPath();
-  ctxLc.moveTo(70, 50);
+  ctxLc.moveTo(canvasWidthLc - 80, canvasHeightLc - 50);
+  ctxLc.lineTo(canvasWidthLc - 85, canvasHeightLc - 55);
+  ctxLc.stroke();
+  ctxLc.closePath();
+
+  ctxLc.beginPath();
+  ctxLc.moveTo(canvasWidthLc - 80, canvasHeightLc - 50);
+  ctxLc.lineTo(canvasWidthLc - 85, canvasHeightLc - 45);
+  ctxLc.stroke();
+  ctxLc.closePath();
+
+  // X axis
+  ctxLc.beginPath();
+  ctxLc.moveTo(70, 45);
   ctxLc.lineTo(70, canvasHeightLc - 50);
   ctxLc.stroke();
   ctxLc.closePath();
 
   ctxLc.beginPath();
-  ctxLc.moveTo(70, 50);
-  ctxLc.lineTo(75, 55);
+  ctxLc.moveTo(70, 45);
+  ctxLc.lineTo(75, 50);
   ctxLc.stroke();
   ctxLc.closePath();
 
   ctxLc.beginPath();
-  ctxLc.moveTo(70, 50);
-  ctxLc.lineTo(65, 55);
-  ctxLc.stroke();
-  ctxLc.closePath();
-
-  ctxLc.beginPath();
-  ctxLc.moveTo(70, 50);
-  ctxLc.lineTo(65, 55);
-  ctxLc.stroke();
-  ctxLc.closePath();
-
-  ctxLc.beginPath();
-  ctxLc.moveTo(canvasWidthLc - 50, canvasHeightLc - 50);
-  ctxLc.lineTo(canvasWidthLc - 55, canvasHeightLc - 55);
-  ctxLc.stroke();
-  ctxLc.closePath();
-
-  ctxLc.beginPath();
-  ctxLc.moveTo(canvasWidthLc - 50, canvasHeightLc - 50);
-  ctxLc.lineTo(canvasWidthLc - 55, canvasHeightLc - 45);
+  ctxLc.moveTo(70, 45);
+  ctxLc.lineTo(65, 50);
   ctxLc.stroke();
   ctxLc.closePath();
 
   ctxLc.font = '16px Arial';
-  ctxLc.fillStyle = '#005555';
+  ctxLc.fillStyle = '#0c457d';
   ctxLc.fillText('Comments', 10, 30);
-  ctxLc.fillText('Month', canvasWidthLc - 55, canvasHeightLc - 10);
+  ctxLc.fillText('Month', canvasWidthLc - 65, canvasHeightLc - 30);
 
-  ctxLc.font = '14px Arial';
-  ctxLc.fillStyle = '#005555';
-  ctxLc.textBaseline = 'top';
-  ctxLc.fillText('0', 45, canvasHeightLc - 55);
-  ctxLc.fillText('Jan', 60, canvasHeightLc - 35);
+  const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
 
-  for (let i = 0; i < canvasWidthLc / 35; i++) {
+  const monthsLength = (canvasWidthLc - 70 - 50) / 12;
+
+  for (let i = 0; i < 12; i++) {
+    ctxLc.font = '14px Arial';
+    ctxLc.fillStyle = '#e8702a';
+    ctxLc.textBaseline = 'top';
+    ctxLc.fillText(`${months[i]}`, 60 + monthsLength * i, canvasHeightLc - 35);
+
     ctxLc.beginPath();
     ctxLc.strokeStyle = 'rgba(153,153,153,0.5)';
-    ctxLc.moveTo(100 + i * 30, canvasHeightLc - 50);
-    ctxLc.lineTo(100 + i * 30, 50);
+    ctxLc.moveTo(70 + i * monthsLength, canvasHeightLc - 50);
+    ctxLc.lineTo(70 + i * monthsLength, 77);
     ctxLc.stroke();
     ctxLc.closePath();
   }
 
-  for (let i = 0; i < canvasHeightLc / 41; i++) {
+  const commentsLength = (canvasHeightLc - 45 - 50) / 10;
+
+  for (let i = 0; i < 10; i++) {
+    ctxLc.font = '14px Arial';
+    ctxLc.fillStyle = '#0ea7b5';
+    ctxLc.textAlign = 'center';
+    ctxLc.fillText(`${i * 50}`, 45, canvasHeightLc - 55 - commentsLength * i);
+
     ctxLc.beginPath();
     ctxLc.strokeStyle = 'rgba(153,153,153,0.5)';
-    ctxLc.moveTo(70, canvasHeightLc - 80 - i * 30);
-    ctxLc.lineTo(canvasWidthLc - 51, canvasHeightLc - 80 - i * 30);
+    ctxLc.moveTo(70, canvasHeightLc - 50 - i * commentsLength);
+    ctxLc.lineTo(canvasWidthLc - 115, canvasHeightLc - 50 - i * commentsLength);
     ctxLc.stroke();
     ctxLc.closePath();
   }

@@ -49,12 +49,12 @@ export default function generateBarChart() {
   ctx.closePath();
 
   ctx.font = '16px Arial';
-  ctx.fillStyle = '#005555';
+  ctx.fillStyle = '#0c457d';
   ctx.fillText('Posts', 10, 30);
   ctx.fillText('Users', canvasWidth - 55, canvasHeight - 10);
 
   ctx.font = '14px Arial';
-  ctx.fillStyle = '#005555';
+  ctx.fillStyle = '#6bd2db';
   ctx.textBaseline = 'top';
   ctx.fillText('0', 45, canvasHeight - 55);
 
@@ -84,7 +84,7 @@ export default function generateBarChart() {
     );
 
     ctx.font = '14px Arial';
-    ctx.fillStyle = '#005555';
+    ctx.fillStyle = '#6bd2db';
     ctx.textBaseline = 'top';
     ctx.fillText(`${max.numberOfPosts}`, 45, canvasHeight - 50 - max.numberOfPosts * 30);
     ctx.fillText(
@@ -95,10 +95,11 @@ export default function generateBarChart() {
 
     let iterator = 100;
     users.map((user) => {
-      ctx.fillStyle = '#86B8B1';
+      ctx.fillStyle = '#ffbe4f';
       ctx.fillRect(iterator, canvasHeight - 50, 45, -user.numberOfPosts * 30);
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'center';
+      ctx.fillStyle = '#e8702a';
       ctx.fillText(`${user.username.slice(0, 8)}...`, iterator + 30, canvasHeight - 27);
       iterator += 85;
     });

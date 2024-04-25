@@ -1,5 +1,5 @@
 .page {
-  background-color: #d4dfe7;
+  background-color: #c3edf0;
   min-width: 320px;
   max-width: 1280px;
   width: 100%;
@@ -24,7 +24,7 @@
 
 .headet__title {
   font-size: 38px;
-  color: #006161;
+  color: #0c457d;
 }
 
 .content {
@@ -47,7 +47,7 @@
   margin: 0;
   font-weight: 500;
   margin-bottom: 30px;
-  color: #328080;
+  color: #0c457d;
 }
 
 #bar_chart {
