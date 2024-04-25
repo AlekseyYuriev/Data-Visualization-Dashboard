@@ -56,3 +56,10 @@
   border-radius: 12px;
   margin-bottom: 50px;
 }
+
+#line_chart {
+  background-color: #fff;
+  border: 1px solid #006161;
+  border-radius: 12px;
+  margin-bottom: 50px;
+}
