@@ -78,7 +78,7 @@ export default function generateBarChart() {
     }
 
     // console.log(users);
-    users[3].numberOfPosts = 11;
+    users[3].numberOfPosts = 12;
     const max = users.reduce((acc, curr) =>
       acc.numberOfPosts > curr.numberOfPosts ? acc : curr,
     );
