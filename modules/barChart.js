@@ -29,11 +29,6 @@ export default function generateBarChart() {
   ctx.fillText('Posts', 10, 30);
   ctx.fillText('Users', canvasWidth - 55, canvasHeight - 10);
 
-  // ctx.font = '14px Arial';
-  // ctx.fillStyle = '#6bd2db';
-  // ctx.textBaseline = 'top';
-  // ctx.fillText('0', 45, canvasHeight - 55);
-
   Promise.all([posts, users]).then((data) => {
     // console.log(data);
     const users = [];
@@ -59,13 +54,11 @@ export default function generateBarChart() {
       acc.numberOfPosts > curr.numberOfPosts ? acc : curr,
     );
 
-    console.log(max);
     const postsLength = max.numberOfPosts / 8;
-    console.log(postsLength);
 
     for (let i = 0; i < 10; i++) {
       ctx.font = '14px Arial';
-      ctx.fillStyle = '#6bd2db';
+      ctx.fillStyle = '#0ea7b5';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(
