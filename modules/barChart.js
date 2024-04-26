@@ -59,7 +59,7 @@ export default function generateBarChart() {
   ctx.fillText('0', 45, canvasHeight - 55);
 
   Promise.all([posts, users]).then((data) => {
-    console.log(data);
+    // console.log(data);
     const users = [];
     data[1].forEach((element) => {
       users.push({
@@ -77,9 +77,9 @@ export default function generateBarChart() {
       });
     }
 
-    console.log(users);
+    // console.log(users);
     users[3].numberOfPosts = 11;
-    let max = users.reduce((acc, curr) =>
+    const max = users.reduce((acc, curr) =>
       acc.numberOfPosts > curr.numberOfPosts ? acc : curr,
     );
 
