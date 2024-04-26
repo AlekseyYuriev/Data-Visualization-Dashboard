@@ -50,7 +50,7 @@ export default function generateLineChart() {
     console.log(commentPerMonth);
     console.log(monthWithMaxNumberOfComments);
 
-    // Y axis
+    // X axis
     ctxLc.beginPath();
     ctxLc.moveTo(70, canvasHeightLc - 50);
     ctxLc.lineTo(canvasWidthLc - 80, canvasHeightLc - 50);
@@ -69,29 +69,7 @@ export default function generateLineChart() {
     ctxLc.stroke();
     ctxLc.closePath();
 
-    // X axis
-    ctxLc.beginPath();
-    ctxLc.moveTo(70, 45);
-    ctxLc.lineTo(70, canvasHeightLc - 50);
-    ctxLc.stroke();
-    ctxLc.closePath();
-
-    ctxLc.beginPath();
-    ctxLc.moveTo(70, 45);
-    ctxLc.lineTo(75, 50);
-    ctxLc.stroke();
-    ctxLc.closePath();
-
-    ctxLc.beginPath();
-    ctxLc.moveTo(70, 45);
-    ctxLc.lineTo(65, 50);
-    ctxLc.stroke();
-    ctxLc.closePath();
-
-    ctxLc.font = '16px Arial';
-    ctxLc.fillStyle = '#0c457d';
-    ctxLc.fillText('Comments', 10, 30);
-    ctxLc.fillText('Month', canvasWidthLc - 65, canvasHeightLc - 30);
+    console.log(ctxLc.strokeStyle, ctxLc.lineWidth, ctxLc.textAlign, ctxLc.textBaseline);
 
     const months = [
       'Jan',
@@ -124,19 +102,24 @@ export default function generateLineChart() {
       ctxLc.closePath();
     }
 
-    const commentsLength =
-      (canvasHeightLc - 45 - 50) / (500 / monthWithMaxNumberOfComments).toFixed(0);
+    const commentsLength = Math.round((canvasHeightLc - 45 - 50) / (500 / 12));
 
-    for (let i = 0; i < 9; i++) {
+    console.log(commentsLength);
+
+    for (let i = 0; i < 8; i++) {
       ctxLc.font = '14px Arial';
       ctxLc.fillStyle = '#0ea7b5';
       ctxLc.textAlign = 'center';
-      ctxLc.fillText(`${i * 20}`, 45, canvasHeightLc - 55 - commentsLength * i);
+      ctxLc.fillText(
+        `${i * commentsLength}`,
+        45,
+        canvasHeightLc - 55 - commentsLength * i * 5,
+      );
 
       ctxLc.beginPath();
       ctxLc.strokeStyle = 'rgba(153,153,153,0.5)';
-      ctxLc.moveTo(70, canvasHeightLc - 50 - i * commentsLength);
-      ctxLc.lineTo(canvasWidthLc - 115, canvasHeightLc - 50 - i * commentsLength);
+      ctxLc.moveTo(70, canvasHeightLc - 50 - i * commentsLength * 5);
+      ctxLc.lineTo(canvasWidthLc - 100, canvasHeightLc - 50 - i * commentsLength * 5);
       ctxLc.stroke();
       ctxLc.closePath();
     }
@@ -144,16 +127,46 @@ export default function generateLineChart() {
     for (let i = 0; i < 12; i++) {
       ctxLc.beginPath();
       ctxLc.strokeStyle = '#ffbe4f';
+      ctxLc.lineWidth = 3;
       ctxLc.moveTo(
         70 + i * monthsLength,
-        canvasHeightLc - 70 - Object.values(commentPerMonth)[i],
+        canvasHeightLc - 50 - Object.values(commentPerMonth)[i] * 5,
       );
       ctxLc.lineTo(
         70 + monthsLength * (i + 1),
-        canvasHeightLc - 70 - Object.values(commentPerMonth)[i + 1],
+        canvasHeightLc - 50 - Object.values(commentPerMonth)[i + 1] * 5,
       );
       ctxLc.stroke();
       ctxLc.closePath();
     }
+
+    ctxLc.strokeStyle = '#000000';
+    ctxLc.lineWidth = 1;
+    ctxLc.textAlign = 'start';
+    ctxLc.textBaseline = 'alphabetic';
+
+    // Y axis
+    ctxLc.beginPath();
+    ctxLc.moveTo(70, 45);
+    ctxLc.lineTo(70, canvasHeightLc - 50);
+    ctxLc.stroke();
+    ctxLc.closePath();
+
+    ctxLc.beginPath();
+    ctxLc.moveTo(70, 45);
+    ctxLc.lineTo(75, 50);
+    ctxLc.stroke();
+    ctxLc.closePath();
+
+    ctxLc.beginPath();
+    ctxLc.moveTo(70, 45);
+    ctxLc.lineTo(65, 50);
+    ctxLc.stroke();
+    ctxLc.closePath();
+
+    ctxLc.font = '16px Arial';
+    ctxLc.fillStyle = '#0c457d';
+    ctxLc.fillText('Comments', 10, 30);
+    ctxLc.fillText('Month', canvasWidthLc - 65, canvasHeightLc - 30);
   });
 }
