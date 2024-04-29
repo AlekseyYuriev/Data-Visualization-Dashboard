@@ -46,8 +46,70 @@
 .chart__title {
   margin: 0;
   font-weight: 500;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   color: #0c457d;
+}
+
+.chart__form-wrapper {
+  max-width: 1000px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+.chart__form {
+  max-width: 500px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  column-gap: 50px;
+}
+
+.chart__fieldset {
+  max-width: 165px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 10px;
+}
+
+.chart__lable {
+  color: #0c457d;
+  font-size: 18px;
+  text-align: center;
+}
+
+.chart__input {
+  border: none;
+  border-radius: 12px;
+  width: 150px;
+  height: 30px;
+  padding: 0 0 0 15px;
+  color: #0c457d;
+}
+
+.chart__input:focus {
+  font-size: 12px;
+  font-weight: 400;
+  outline: 1px solid #0c457d;
+  padding-left: 15px;
+}
+
+.chart__button {
+  width: 165px;
+  height: 30px;
+  padding: 0;
+  margin: 30px 0 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  color: #0c457d;
+  font-weight: 600;
+  background-color: #ffbe4f;
 }
 
 #bar_chart {

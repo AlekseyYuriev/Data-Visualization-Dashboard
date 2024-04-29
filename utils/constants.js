@@ -5,6 +5,17 @@ export const ctx = canvas.getContext('2d');
 export const canvasWidth = canvas.clientWidth;
 export const canvasHeight = canvas.clientHeight;
 
+export const barChartForm = document.forms.bar_chart_form;
+console.log(barChartForm);
+
+export const barChartUserInput = barChartForm.elements.barUsername;
+export const barChartPostInput = barChartForm.elements.barPostbody;
+console.log(barChartUserInput, barChartPostInput);
+
+export const barChartSubmitButton = document.querySelector('.chart__button-submit');
+export const barChartResetButton = document.querySelector('.chart__button-reset');
+console.log(barChartSubmitButton, barChartResetButton);
+
 // Line Chart
 export const canvasLineChart = document.getElementById('line_chart');
 export const ctxLc = canvasLineChart.getContext('2d');

@@ -14,6 +14,34 @@
     <main class="content">
       <section class="chart">
         <h2 class="chart__title">Number of Posts per User</h2>
+        <div class="chart__form-wrapper">
+          <form name="bar_chart_form" class="chart__form">
+            <fieldset class="chart__fieldset">
+              <label for="barUsername" class="chart__lable">Enter Username:</label>
+              <input
+                type="text"
+                class="chart__input"
+                id="barUsername"
+                name="barUsername"
+              />
+            </fieldset>
+            <fieldset class="chart__fieldset">
+              <label for="barPostbody" class="chart__lable">Enter Post content:</label>
+              <input
+                type="text"
+                class="chart__input"
+                id="barPostbody"
+                name="barPostbody"
+              />
+            </fieldset>
+            <button type="submit" class="chart__button chart__button-submit">
+              Update Bar Chart
+            </button>
+            <button type="reset" class="chart__button chart__button-reset">
+              Reset Bar Chart
+            </button>
+          </form>
+        </div>
         <canvas id="bar_chart" width="1000" height="500"></canvas>
       </section>
       <section class="chart">

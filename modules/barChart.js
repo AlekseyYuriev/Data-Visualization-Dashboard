@@ -1,6 +1,23 @@
 import { USERS_URL, POSTS_URL } from '../utils/urls.js';
-import { ctx, canvasWidth, canvasHeight } from '../utils/constants.js';
+import {
+  ctx,
+  canvasWidth,
+  canvasHeight,
+  barChartSubmitButton,
+  barChartUserInput,
+  barChartPostInput,
+} from '../utils/constants.js';
 import getData from '../utils/service.js';
+
+// let userInput = '';
+// let postInput = '';
+
+// barChartSubmitButton.addEventListener('click', (evt) => {
+//   evt.preventDefault();
+//   userInput = barChartUserInput.value;
+//   postInput = barChartPostInput.value;
+//   console.log(userInput, postInput);
+// });
 
 export default function generateBarChart() {
   const posts = getData(POSTS_URL);
