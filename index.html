@@ -80,6 +80,34 @@
       </section>
       <section class="chart">
         <h2 class="chart__title">Percentage Distribution of Posts among Users</h2>
+        <div class="chart__form-wrapper">
+          <form name="pie_chart_form" class="chart__form">
+            <fieldset class="chart__fieldset">
+              <label for="pieUsername" class="chart__lable">Enter Username:</label>
+              <input
+                type="text"
+                class="chart__input"
+                id="pieUsername"
+                name="pieUsername"
+              />
+            </fieldset>
+            <fieldset class="chart__fieldset">
+              <label for="piePostbody" class="chart__lable">Enter Post content:</label>
+              <input
+                type="text"
+                class="chart__input"
+                id="piePostbody"
+                name="piePostbody"
+              />
+            </fieldset>
+            <button type="submit" class="chart__button pie-chart__button-submit">
+              Update Bar Chart
+            </button>
+            <button type="reset" class="chart__button pie-chart__button-reset">
+              Reset Bar Chart
+            </button>
+          </form>
+        </div>
         <canvas id="pie_chart" width="1000" height="500"></canvas>
       </section>
     </main>

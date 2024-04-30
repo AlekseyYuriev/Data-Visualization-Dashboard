@@ -35,6 +35,14 @@ export const ctxPc = canvasPieChart.getContext('2d');
 export const canvasWidthPc = canvasPieChart.clientWidth;
 export const canvasHeightPc = canvasPieChart.clientHeight;
 
+export const pieCartForm = document.forms.pie_chart_form;
+
+export const pieChartUserInput = pieCartForm.elements.pieUsername;
+export const pieChartPostInput = pieCartForm.elements.piePostbody;
+
+export const pieChartSubmitButton = document.querySelector('.pie-chart__button-submit');
+export const pieChartResetButton = document.querySelector('.pie-chart__button-reset');
+
 export const colors = [
   '#008080',
   '#e8702a',
