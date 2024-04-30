@@ -15,9 +15,21 @@ export default function generateLineChart() {
 
   function updateLineChartData(userEmailInput, commentBodyInput) {
     commentsData.then((data) => {
-      console.log(data[0]);
+      let filteredComments = [];
+
+      if (userEmailInput || commentBodyInput) {
+        filteredComments = data.filter(
+          (comment) =>
+            comment.email.includes(userEmailInput) &&
+            comment.body.includes(commentBodyInput),
+        );
+      } else {
+        filteredComments = data;
+      }
+
       const comments = [];
-      data.forEach((element) => {
+
+      filteredComments.forEach((element) => {
         comments.push({
           id: element.id,
           name: element.name,
@@ -118,13 +130,15 @@ export default function generateLineChart() {
         ctxLc.fillStyle = '#0ea7b5';
         ctxLc.textAlign = 'center';
         ctxLc.textBaseline = 'middle';
-        ctxLc.fillText(
-          commentsLength.toString().startsWith('0')
-            ? `${0 + +(i * commentsLength).toFixed(1)}`
-            : `${0 + +(i * commentsLength).toFixed(0)}`,
-          45,
-          canvasHeightLc - 50 - ((canvasHeightLc - 50 - 35) / 10) * i,
-        );
+        commentsLength !== 0
+          ? ctxLc.fillText(
+              commentsLength.toString().startsWith('0')
+                ? `${0 + +(i * commentsLength).toFixed(1)}`
+                : `${0 + +(i * commentsLength).toFixed(0)}`,
+              45,
+              canvasHeightLc - 50 - ((canvasHeightLc - 50 - 35) / 10) * i,
+            )
+          : ctxLc.fillText('0', 45, canvasHeightLc - 50);
 
         ctxLc.beginPath();
         ctxLc.strokeStyle = 'rgba(153,153,153,0.5)';
