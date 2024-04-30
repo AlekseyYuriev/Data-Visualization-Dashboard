@@ -10,8 +10,8 @@ export const barChartForm = document.forms.bar_chart_form;
 export const barChartUserInput = barChartForm.elements.barUsername;
 export const barChartPostInput = barChartForm.elements.barPostbody;
 
-export const barChartSubmitButton = document.querySelector('.chart__button-submit');
-export const barChartResetButton = document.querySelector('.chart__button-reset');
+export const barChartSubmitButton = document.querySelector('.bar-chart__button-submit');
+export const barChartResetButton = document.querySelector('.bar-chart__button-reset');
 
 // Line Chart
 export const canvasLineChart = document.getElementById('line_chart');
@@ -19,6 +19,14 @@ export const ctxLc = canvasLineChart.getContext('2d');
 
 export const canvasWidthLc = canvasLineChart.clientWidth;
 export const canvasHeightLc = canvasLineChart.clientHeight;
+
+export const lineChartForm = document.forms.line_chart_form;
+
+export const lineChartUseremailInput = lineChartForm.elements.lineUseremail;
+export const lineChartCommentBodyInput = lineChartForm.elements.lineCommentbody;
+
+export const lineChartSubmitButton = document.querySelector('.line-chart__button-submit');
+export const lineChartResetButton = document.querySelector('.line-chart__button-reset');
 
 //Pie Chart
 export const canvasPieChart = document.getElementById('pie_chart');

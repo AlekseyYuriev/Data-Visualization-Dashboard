@@ -14,7 +14,7 @@ export default function generateBarChart() {
   const posts = getData(POSTS_URL);
   const users = getData(USERS_URL);
 
-  function updateData(userInput, postInput) {
+  function updateBarChartData(userInput, postInput) {
     Promise.all([posts, users]).then((data) => {
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
@@ -161,7 +161,8 @@ export default function generateBarChart() {
     });
   }
 
-  updateData();
+  updateBarChartData();
+
   let userInput = '';
   let postInput = '';
 
@@ -169,12 +170,12 @@ export default function generateBarChart() {
     evt.preventDefault();
     userInput = barChartUserInput.value;
     postInput = barChartPostInput.value;
-    updateData(userInput, postInput);
+    updateBarChartData(userInput, postInput);
   });
 
   barChartResetButton.addEventListener('click', () => {
     userInput = '';
     postInput = '';
-    updateData(userInput, postInput);
+    updateBarChartData(userInput, postInput);
   });
 }

@@ -34,10 +34,10 @@
                 name="barPostbody"
               />
             </fieldset>
-            <button type="submit" class="chart__button chart__button-submit">
+            <button type="submit" class="chart__button bar-chart__button-submit">
               Update Bar Chart
             </button>
-            <button type="reset" class="chart__button chart__button-reset">
+            <button type="reset" class="chart__button bar-chart__button-reset">
               Reset Bar Chart
             </button>
           </form>
@@ -46,6 +46,36 @@
       </section>
       <section class="chart">
         <h2 class="chart__title">Monthly Comment Trend</h2>
+        <div class="chart__form-wrapper">
+          <form name="line_chart_form" class="chart__form">
+            <fieldset class="chart__fieldset">
+              <label for="lineUseremail" class="chart__lable">Enter Useremail:</label>
+              <input
+                type="text"
+                class="chart__input"
+                id="lineUseremail"
+                name="lineUseremail"
+              />
+            </fieldset>
+            <fieldset class="chart__fieldset">
+              <label for="lineCommentbody" class="chart__lable"
+                >Enter Comment content:</label
+              >
+              <input
+                type="text"
+                class="chart__input"
+                id="lineCommentbody"
+                name="lineCommentbody"
+              />
+            </fieldset>
+            <button type="submit" class="chart__button line-chart__button-submit">
+              Update Line Chart
+            </button>
+            <button type="reset" class="chart__button line-chart__button-reset">
+              Reset Line Chart
+            </button>
+          </form>
+        </div>
         <canvas id="line_chart" width="1000" height="500"></canvas>
       </section>
       <section class="chart">
