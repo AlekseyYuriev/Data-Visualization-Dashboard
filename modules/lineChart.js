@@ -2,6 +2,7 @@ import getData from '../utils/service.js';
 import { COMMENTS_URL } from '../utils/urls.js';
 import {
   canvasHeightLc,
+  canvasLineChart,
   canvasWidthLc,
   ctxLc,
   lineChartCommentBodyInput,
@@ -213,14 +214,23 @@ export default function generateLineChart() {
 
   lineChartSubmitButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    canvasLineChart.classList.remove('canvas__visible');
     userEmailInput = lineChartUseremailInput.value;
     commentBodyInput = lineChartCommentBodyInput.value;
-    updateLineChartData(userEmailInput, commentBodyInput);
+    setTimeout(function () {
+      updateLineChartData(userEmailInput, commentBodyInput);
+      canvasLineChart.classList.add('canvas__visible');
+    }, 1000);
   });
 
   lineChartResetButton.addEventListener('click', () => {
+    canvasLineChart.classList.remove('canvas__visible');
     userEmailInput = '';
     commentBodyInput = '';
-    updateLineChartData(userEmailInput, commentBodyInput);
+
+    setTimeout(function () {
+      updateLineChartData(userEmailInput, commentBodyInput);
+      canvasLineChart.classList.add('canvas__visible');
+    }, 1000);
   });
 }

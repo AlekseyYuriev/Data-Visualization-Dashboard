@@ -1,9 +1,12 @@
-// Bar Chart
-export const canvas = document.getElementById('bar_chart');
-export const ctx = canvas.getContext('2d');
+//Body
+export const bodyContent = document.querySelector('.page');
 
-export const canvasWidth = canvas.clientWidth;
-export const canvasHeight = canvas.clientHeight;
+// Bar Chart
+export const canvasBarChart = document.getElementById('bar_chart');
+export const ctx = canvasBarChart.getContext('2d');
+
+export const canvasWidth = canvasBarChart.clientWidth;
+export const canvasHeight = canvasBarChart.clientHeight;
 
 export const barChartForm = document.forms.bar_chart_form;
 

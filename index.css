@@ -11,6 +11,12 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.page_visible {
+  opacity: 1;
 }
 
 .header {
@@ -110,25 +116,45 @@
   color: #0c457d;
   font-weight: 600;
   background-color: #ffbe4f;
+  transition: opacity 0.3s, transform 0.2s;
 }
 
-#bar_chart {
+.chart__button:hover {
+  opacity: 0.9;
+  transform: scale(101%);
+}
+
+.chart__button:active {
+  transform: scale(98%);
+}
+
+.bar__chart {
   background-color: #fff;
   border: 1px solid #006161;
   border-radius: 12px;
   margin-bottom: 50px;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
-#line_chart {
+.line__chart {
   background-color: #fff;
   border: 1px solid #006161;
   border-radius: 12px;
   margin-bottom: 50px;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
-#pie_chart {
+.pie__chart {
   background-color: #fff;
   border: 1px solid #006161;
   border-radius: 12px;
   margin-bottom: 50px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.canvas__visible {
+  opacity: 1;
 }

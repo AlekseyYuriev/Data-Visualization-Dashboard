@@ -7,6 +7,7 @@ import {
   barChartUserInput,
   barChartPostInput,
   barChartResetButton,
+  canvasBarChart,
 } from '../utils/constants.js';
 import getData from '../utils/service.js';
 
@@ -168,14 +169,22 @@ export default function generateBarChart() {
 
   barChartSubmitButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    canvasBarChart.classList.remove('canvas__visible');
     userInput = barChartUserInput.value;
     postInput = barChartPostInput.value;
-    updateBarChartData(userInput, postInput);
+    setTimeout(function () {
+      updateBarChartData(userInput, postInput);
+      canvasBarChart.classList.add('canvas__visible');
+    }, 1000);
   });
 
   barChartResetButton.addEventListener('click', () => {
+    canvasBarChart.classList.remove('canvas__visible');
     userInput = '';
     postInput = '';
-    updateBarChartData(userInput, postInput);
+    setTimeout(function () {
+      updateBarChartData(userInput, postInput);
+      canvasBarChart.classList.add('canvas__visible');
+    }, 1000);
   });
 }

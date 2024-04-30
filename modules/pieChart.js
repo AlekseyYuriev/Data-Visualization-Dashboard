@@ -1,5 +1,6 @@
 import {
   canvasHeightPc,
+  canvasPieChart,
   canvasWidthPc,
   colors,
   ctxPc,
@@ -142,14 +143,22 @@ export default function generatePieChart() {
 
   pieChartSubmitButton.addEventListener('click', (evt) => {
     evt.preventDefault();
+    canvasPieChart.classList.remove('canvas__visible');
     userInput = pieChartUserInput.value;
     postInput = pieChartPostInput.value;
-    updatePieChartData(userInput, postInput);
+    setTimeout(function () {
+      updatePieChartData(userInput, postInput);
+      canvasPieChart.classList.add('canvas__visible');
+    }, 1000);
   });
 
   pieChartResetButton.addEventListener('click', () => {
+    canvasPieChart.classList.remove('canvas__visible');
     userInput = '';
     postInput = '';
-    updatePieChartData(userInput, postInput);
+    setTimeout(function () {
+      updatePieChartData(userInput, postInput);
+      canvasPieChart.classList.add('canvas__visible');
+    }, 1000);
   });
 }
