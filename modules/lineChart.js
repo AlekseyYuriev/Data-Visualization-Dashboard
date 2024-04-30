@@ -44,6 +44,8 @@ export default function generateLineChart() {
       }
     });
 
+    ctxLc.clearRect(0, 0, canvasWidthLc, canvasHeightLc);
+
     // X axis
     ctxLc.beginPath();
     ctxLc.moveTo(70, canvasHeightLc - 50);

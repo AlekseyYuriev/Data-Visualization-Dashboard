@@ -8,7 +8,7 @@ export default function generatePieChart() {
 
   Promise.all([posts, users]).then((data) => {
     const posts = data[0];
-    console.log(posts);
+    // console.log(posts);
 
     const users = [];
     data[1].forEach((element) => {
@@ -26,7 +26,9 @@ export default function generatePieChart() {
         }
       });
     }
-    console.log(users);
+    // console.log(users);
+
+    ctxPc.clearRect(0, 0, canvasWidthPc, canvasHeightPc);
 
     const centerX = (canvasWidthPc - 250) / 2;
     const centerY = canvasHeightPc / 2;
