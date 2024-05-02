@@ -70,7 +70,7 @@ export default function generatePieChart() {
       const centerY = canvasHeightPc / 2;
       const radius = (canvasHeightPc - 80) / 2;
 
-      if (users.length == 0) {
+      if (users.length == 0 || filteredPosts.length == 0) {
         ctxPc.beginPath();
         ctxPc.moveTo(canvasWidthPc / 2, canvasHeightPc / 2);
         ctxPc.font = '32px Arial';
