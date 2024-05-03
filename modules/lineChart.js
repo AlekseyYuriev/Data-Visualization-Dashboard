@@ -1,46 +1,51 @@
-import getData from '../utils/service.js';
 import { COMMENTS_URL } from '../utils/urls.js';
-import {
-  canvasHeightLc,
-  canvasLineChart,
-  canvasWidthLc,
-  ctxLc,
-  lineChartCommentBodyInput,
-  lineChartResetButton,
-  lineChartSubmitButton,
-  lineChartUseremailInput,
-} from '../utils/constants.js';
+import getData from '../utils/service.js';
+import { months } from '../utils/constants.js';
+
+// Line Chart elements
+export const canvasLineChart = document.getElementById('line_chart');
+const ctxLc = canvasLineChart.getContext('2d');
+
+const canvasWidthLc = canvasLineChart.clientWidth;
+const canvasHeightLc = canvasLineChart.clientHeight;
+
+const lineChartForm = document.forms.line_chart_form;
+
+const lineChartUseremailInput = lineChartForm.elements.lineUseremail;
+const lineChartCommentBodyInput = lineChartForm.elements.lineCommentbody;
+
+const lineChartSubmitButton = document.querySelector('.line-chart__button-submit');
+const lineChartResetButton = document.querySelector('.line-chart__button-reset');
 
 export default function generateLineChart() {
   const commentsData = getData(COMMENTS_URL);
 
+  const date = {};
+
   function updateLineChartData(userEmailInput, commentBodyInput) {
     commentsData.then((data) => {
-      let filteredComments = [];
-
-      if (userEmailInput || commentBodyInput) {
-        filteredComments = data.filter(
-          (comment) =>
-            comment.email.includes(userEmailInput) &&
-            comment.body.includes(commentBodyInput),
-        );
-      } else {
-        filteredComments = data;
-      }
-
-      const comments = [];
-
-      filteredComments.forEach((element) => {
-        comments.push({
-          id: element.id,
-          name: element.name,
-          email: element.email,
-          body: element.body,
-          date: new Date(2023, Math.round(Math.random() * 11 + 1))
+      let comments = data.map((comment) => {
+        if (!date[comment.id]) {
+          date[comment.id] = new Date(2023, Math.round(Math.random() * 11 + 1))
             .toISOString()
-            .split('T')[0],
+            .split('T')[0];
+        }
+        return (comment = {
+          id: comment.id,
+          name: comment.name,
+          email: comment.email,
+          body: comment.body,
+          date: date[comment.id],
         });
       });
+
+      if (userEmailInput || commentBodyInput) {
+        comments = comments.filter(
+          (comment) =>
+            comment.email.toLowerCase().includes(userEmailInput.toLowerCase()) &&
+            comment.body.toLowerCase().includes(commentBodyInput.toLowerCase()),
+        );
+      }
 
       const commentPerMonth = {
         '1': 0,
@@ -57,7 +62,7 @@ export default function generateLineChart() {
         '12': 0,
       };
 
-      comments.map((item) => {
+      comments.forEach((item) => {
         if (
           Object.keys(commentPerMonth).includes(item.date.slice(5, 7)) &&
           !item.date.slice(5, 7).startsWith('0')
@@ -88,21 +93,6 @@ export default function generateLineChart() {
       ctxLc.lineTo(canvasWidthLc - 85, canvasHeightLc - 45);
       ctxLc.stroke();
       ctxLc.closePath();
-
-      const months = [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ];
 
       const monthsLength = (canvasWidthLc - 70 - 50) / 12;
 

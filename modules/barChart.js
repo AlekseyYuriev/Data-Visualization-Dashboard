@@ -1,15 +1,20 @@
 import { USERS_URL, POSTS_URL } from '../utils/urls.js';
-import {
-  ctx,
-  canvasWidth,
-  canvasHeight,
-  barChartSubmitButton,
-  barChartUserInput,
-  barChartPostInput,
-  barChartResetButton,
-  canvasBarChart,
-} from '../utils/constants.js';
 import getData from '../utils/service.js';
+
+// Bar Chart elements
+export const canvasBarChart = document.getElementById('bar_chart');
+const ctx = canvasBarChart.getContext('2d');
+
+const canvasWidth = canvasBarChart.clientWidth;
+const canvasHeight = canvasBarChart.clientHeight;
+
+const barChartForm = document.forms.bar_chart_form;
+
+const barChartUserInput = barChartForm.elements.barUsername;
+const barChartPostInput = barChartForm.elements.barPostbody;
+
+const barChartSubmitButton = document.querySelector('.bar-chart__button-submit');
+const barChartResetButton = document.querySelector('.bar-chart__button-reset');
 
 export default function generateBarChart() {
   const posts = getData(POSTS_URL);
@@ -42,35 +47,27 @@ export default function generateBarChart() {
       ctx.fillText('Posts', 10, 30);
       ctx.fillText('Users', canvasWidth - 55, canvasHeight - 10);
 
-      const users = [];
+      let users = data[1].map((user) => {
+        return (user = {
+          id: user.id,
+          name: user.name,
+          username: user.username,
+          numberOfPosts: 0,
+        });
+      });
 
       if (userInput) {
-        const filteredUsers = data[1].filter((user) => user.name.includes(userInput));
-        filteredUsers.forEach((element) => {
-          users.push({
-            id: element.id,
-            name: element.name,
-            username: element.username,
-            numberOfPosts: 0,
-          });
-        });
-      } else {
-        data[1].forEach((element) => {
-          users.push({
-            id: element.id,
-            name: element.name,
-            username: element.username,
-            numberOfPosts: 0,
-          });
-        });
+        users = users.filter((user) =>
+          user.username.toLowerCase().includes(userInput.toLowerCase()),
+        );
       }
 
-      let filteredPosts = [];
+      let filteredPosts = data[0];
 
       if (postInput) {
-        filteredPosts = data[0].filter((post) => post.body.includes(postInput));
-      } else {
-        filteredPosts = data[0];
+        filteredPosts = filteredPosts.filter((post) =>
+          post.body.toLowerCase().includes(postInput.toLowerCase()),
+        );
       }
 
       for (let i = 0; i < users.length; i++) {
@@ -116,7 +113,7 @@ export default function generateBarChart() {
       }
 
       let widthIterator = 100;
-      users.map((user) => {
+      users.forEach((user) => {
         ctx.fillStyle = '#ffbe4f';
         ctx.fillRect(
           widthIterator,
