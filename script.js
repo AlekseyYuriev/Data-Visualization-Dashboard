@@ -1,12 +1,9 @@
-import generateBarChart from './modules/barChart.js';
-import generateLineChart from './modules/lineChart.js';
-import generatePieChart from './modules/pieChart.js';
-import {
-  bodyContent,
-  canvasBarChart,
-  canvasLineChart,
-  canvasPieChart,
-} from './utils/constants.js';
+import generateBarChart, { canvasBarChart } from './modules/barChart.js';
+import generateLineChart, { canvasLineChart } from './modules/lineChart.js';
+import generatePieChart, { canvasPieChart } from './modules/pieChart.js';
+
+//Body
+const bodyContent = document.querySelector('.page');
 
 setTimeout(function () {
   bodyContent.classList.add('page_visible');

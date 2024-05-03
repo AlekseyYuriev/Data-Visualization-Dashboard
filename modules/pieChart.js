@@ -1,16 +1,21 @@
-import {
-  canvasHeightPc,
-  canvasPieChart,
-  canvasWidthPc,
-  colors,
-  ctxPc,
-  pieChartPostInput,
-  pieChartResetButton,
-  pieChartSubmitButton,
-  pieChartUserInput,
-} from '../utils/constants.js';
-import getData from '../utils/service.js';
 import { POSTS_URL, USERS_URL } from '../utils/urls.js';
+import getData from '../utils/service.js';
+import { colors } from '../utils/constants.js';
+
+//Pie Chart elements
+export const canvasPieChart = document.getElementById('pie_chart');
+const ctxPc = canvasPieChart.getContext('2d');
+
+const canvasWidthPc = canvasPieChart.clientWidth;
+const canvasHeightPc = canvasPieChart.clientHeight;
+
+const pieCartForm = document.forms.pie_chart_form;
+
+const pieChartUserInput = pieCartForm.elements.pieUsername;
+const pieChartPostInput = pieCartForm.elements.piePostbody;
+
+const pieChartSubmitButton = document.querySelector('.pie-chart__button-submit');
+const pieChartResetButton = document.querySelector('.pie-chart__button-reset');
 
 export default function generatePieChart() {
   const posts = getData(POSTS_URL);
@@ -18,36 +23,26 @@ export default function generatePieChart() {
 
   function updatePieChartData(userInput, postInput) {
     Promise.all([posts, users]).then((data) => {
-      const users = [];
+      let users = data[1].map((user) => {
+        return (user = {
+          id: user.id,
+          name: user.name,
+          username: user.username,
+          numberOfPosts: 0,
+        });
+      });
       if (userInput) {
-        const filteredUsers = data[1].filter((user) =>
+        users = users.filter((user) =>
           user.username.toLowerCase().includes(userInput.toLowerCase()),
         );
-        filteredUsers.forEach((element) => {
-          users.push({
-            id: element.id,
-            name: element.name,
-            username: element.username,
-            numberOfPosts: 0,
-          });
-        });
-      } else {
-        data[1].forEach((element) => {
-          users.push({
-            id: element.id,
-            name: element.name,
-            username: element.username,
-            numberOfPosts: 0,
-          });
-        });
       }
 
-      let filteredPosts = [];
+      let filteredPosts = data[0];
 
       if (postInput) {
-        filteredPosts = data[0].filter((post) => post.body.includes(postInput));
-      } else {
-        filteredPosts = data[0];
+        filteredPosts = filteredPosts.filter((post) =>
+          post.body.toLowerCase().includes(postInput.toLowerCase()),
+        );
       }
 
       for (let i = 0; i < users.length; i++) {
