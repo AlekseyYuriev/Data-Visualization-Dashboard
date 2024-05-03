@@ -20,17 +20,22 @@ const lineChartResetButton = document.querySelector('.line-chart__button-reset')
 export default function generateLineChart() {
   const commentsData = getData(COMMENTS_URL);
 
+  const date = {};
+
   function updateLineChartData(userEmailInput, commentBodyInput) {
     commentsData.then((data) => {
       let comments = data.map((comment) => {
+        if (!date[comment.id]) {
+          date[comment.id] = new Date(2023, Math.round(Math.random() * 11 + 1))
+            .toISOString()
+            .split('T')[0];
+        }
         return (comment = {
           id: comment.id,
           name: comment.name,
           email: comment.email,
           body: comment.body,
-          date: new Date(2023, Math.round(Math.random() * 11 + 1))
-            .toISOString()
-            .split('T')[0],
+          date: date[comment.id],
         });
       });
 
